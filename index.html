@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>กำลังเปลี่ยนเส้นทาง...</title>
+  <script>
+    // ฟังก์ชันรับค่า id จาก URL เช่น ?id=1234
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // สร้างลิงก์เป้าหมายจากพารามิเตอร์
+    const userId = getQueryParam("id");
+    
+    // URL ปลายทางที่ต้องการส่งไป (Google Apps Script)
+    const redirectURL = "https://script.google.com/macros/s/AKfycbxv7SnvH0Abr37F_l1tODWL0OW_0sd5WHgkzi9kjvAlWtZ35eNWDTRsadyXXDLQ0ly58A/exec?id=" + encodeURIComponent(userId);
+
+    // สั่ง redirect หลังโหลดเสร็จ
+    setTimeout(() => {
+      window.location.href = redirectURL;
+    }, 2000);
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h2>กำลังเปลี่ยนเส้นทางไปยังแบบฟอร์มของคุณ</h2>
+  <p>หากไม่เปลี่ยนเส้นทางภายในไม่กี่วินาที <span id="manual-link">คลิกที่นี่</span></p>
+
+  <script>
+    // แสดงลิงก์ fallback (เผื่อ redirect ไม่ทำงาน)
+    document.getElementById("manual-link").innerHTML = `<a href="${redirectURL}">${redirectURL}</a>`;
+  </script>
+</body>
+</html>
+
