@@ -11,7 +11,7 @@
     }
 
     // สร้างลิงก์เป้าหมายจากพารามิเตอร์
-    const userId = getQueryParam("id");
+    const userId = getQueryParam("pud");
     
     // URL ปลายทางที่ต้องการส่งไป (Google Apps Script)
     const redirectURL = "https://script.google.com/macros/s/AKfycbxv7SnvH0Abr37F_l1tODWL0OW_0sd5WHgkzi9kjvAlWtZ35eNWDTRsadyXXDLQ0ly58A/exec?id=" + encodeURIComponent(userId);
